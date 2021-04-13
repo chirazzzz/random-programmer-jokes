@@ -18,13 +18,17 @@ punchlineBtn.addEventListener('click', showPunchline)
 function showPunchline() {
   punchlineDiv.textContent = punchline
   punchlineDiv.classList.add('bubble')
-  
-  punchlineBtn.classList.toggle('hidden')
-  newJokeBtn.classList.toggle('hidden')
+  toggleHiddenButtons()
 }
 
 // Add an event listener for the new joke button. When clicked it should call the getJoke function 
 newJokeBtn.addEventListener('click', getJoke)
+
+// Refactor function
+function toggleHiddenButtons() {
+  punchlineBtn.classList.toggle('hidden')
+  newJokeBtn.classList.toggle('hidden')
+}
 
 /* Setup an async function called getJoke
    Create a variable called jokePromise that fetches a joke from https://official-joke-api.appspot.com/jokes/programming/random
@@ -46,8 +50,7 @@ async function getJoke() {
   punchlineDiv.textContent = ''
   punchlineDiv.classList.remove('bubble')
 
-  punchlineBtn.classList.toggle('hidden')
-  newJokeBtn.classList.toggle('hidden')
+  toggleHiddenButtons()
 }
 
 getJoke()
